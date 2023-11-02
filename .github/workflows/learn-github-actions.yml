@@ -16,6 +16,8 @@ jobs:
           args: --sarif-file-output=snyk.sarif
       - name: Install Snyk CLI
         run: npm install -g snyk
+      - name: Authentication with Snyk
+        run: snyk auth ${{ secrets.SNYK_TOKEN }}
       - name: Run snyk code test
         run: snyk code test
       - name: Upload result to GitHub Code Scanning
